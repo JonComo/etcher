@@ -1,0 +1,5 @@
+out/*
+__pycache__
+movie.mp4
+.ipynb_checkpoints/
+
