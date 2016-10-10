@@ -209,9 +209,12 @@ class Window(pyglet.window.Window):
         pyglet.image.get_buffer_manager().get_color_buffer().save(filepath)
 
     def save_movie(self, filepath='movie.mp4', fps=24):
-        os.system('ffmpeg -f image2 -r {} -i out/img%05d.png -vcodec libx264 -vb 20M -y {}'.format(fps, filepath))
+        os.system('ffmpeg -f image2 -r {} -i out/img%05d.png -vcodec mpeg4 -vb 20M -y {}'.format(fps, filepath))
 
     def begin_recording(self):
+        if not os.path.exists('out'):
+            os.makedirs('out')
+
         files = glob.glob('out/*')
         for f in files:
             os.remove(f)
